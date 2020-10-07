@@ -1,3 +1,5 @@
+// hacer una funcion que limpie todas las tareas ya realizadas
+
 const fs = require("fs");
 const path = require("path");
 
@@ -39,6 +41,12 @@ function toggle(index) {
   save()
 }
 
+function removeTask(index) {
+  tasks.splice(index, 1)
+  showAll();
+  save();
+}
+
 function add(name, deadline) {
   const newtask = {
     name: name,
@@ -75,6 +83,9 @@ switch (param) {
     break;
   case "add":
     add(fourthParam,fifthParam);
+    break;
+  case "remove":
+    removeTask(fourthParam);
     break;
   default:
     console.log("Los parametros aceptados son: 'all', 'done' y 'pending'");
